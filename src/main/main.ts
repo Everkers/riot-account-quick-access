@@ -190,14 +190,14 @@ if (!appIsLocked) {
  * IPC Events
  */
 
-ipcMain.on('select-account', async (_, account) => {
+ipcMain.on('select-account', (_, account) => {
   mainWindow?.minimize();
-  await keySender.sendKey('tab');
-  await keySender.sendText(account[0].username);
-  await keySender.sendKey('tab');
-  await keySender.sendText(account[0].password);
-  await keySender.sendCombination(['shift', 'tab']);
-  await keySender.sendCombination(['shift', 'tab']);
+  keySender.sendKey('tab');
+  keySender.sendText(account[0].username);
+  keySender.sendKey('tab');
+  keySender.sendText(account[0].password);
+  keySender.sendCombination(['shift', 'tab']);
+  keySender.sendCombination(['shift', 'tab']);
 });
 ipcMain.on('minimize', async () => {
   ipcMain.on('minimize', async () => mainWindow?.hide());
